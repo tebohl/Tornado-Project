@@ -8,7 +8,7 @@
 - **Rhiana Schafer**
 - **Ishanjit Sidhu**
 
-# Methods
+### Methods
 * Python
 * HTML
 * Javascript
