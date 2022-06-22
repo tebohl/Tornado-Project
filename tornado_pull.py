@@ -1,7 +1,7 @@
+#Importing Dependencies
 import pandas as pd
 import requests
 import datetime 
-import time
 
 def pull():
 
@@ -50,7 +50,7 @@ def pull():
     for dates in complete_endpoints:
         complete_url = base_url + dates
         all_urls.append(complete_url)
-    #print(len(all_urls))
+
 
     #List/Variables setup
     cell_type =[]
@@ -67,41 +67,23 @@ def pull():
 
 
 
-    # Start of Log
-    print("-----------------------------")
-    print("Beginning Data Retrieval - estimated time is <5min")
-    print("-----------------------------")
-
     #----BEGIN Loop----
     # Looping through urls and appending data to lists
     for url in all_urls:
-        try:
-            response = requests.get(url).json()
-            for i in range(len(response["result"])):
-                cell_type.append(response["result"][i]["CELL_TYPE"])
-                shape.append(response["result"][i]["SHAPE"])
-                max_shear.append(response["result"][i]["MAX_SHEAR"])
-                wsr_id.append(response["result"][i]["WSR_ID"])
-                mxdv.append(response["result"][i]["MXDV"])
-                cell_id.append(response["result"][i]["CELL_ID"])
-                ztime.append(response["result"][i]["ZTIME"])
-                azimuth.append(response["result"][i]["AZIMUTH"])
-                range_.append(response["result"][i]["RANGE"])
-                lon.append(response["result"][i]["SHAPE"].split()[1:][0].split('(')[1])
-                lat.append(response["result"][i]["SHAPE"].split()[1:][1].split(')')[0])
-                #print(f"Processing Record {i} of URL {url_counter}")
-            #url_counter += 1
-        
-        except(KeyError, IndexError):
-            print(f"URL {url} not found. Skipping...")
-
-    #----END Loop-----
-
-    # End of Log
-    print("-----------------------------")
-    print("Data Retrieval Complete")
-    print("-----------------------------") 
-
+        response = requests.get(url).json()
+        for i in range(len(response["result"])):
+            cell_type.append(response["result"][i]["CELL_TYPE"])
+            shape.append(response["result"][i]["SHAPE"])
+            max_shear.append(response["result"][i]["MAX_SHEAR"])
+            wsr_id.append(response["result"][i]["WSR_ID"])
+            mxdv.append(response["result"][i]["MXDV"])
+            cell_id.append(response["result"][i]["CELL_ID"])
+            ztime.append(response["result"][i]["ZTIME"])
+            azimuth.append(response["result"][i]["AZIMUTH"])
+            range_.append(response["result"][i]["RANGE"])
+            lon.append(response["result"][i]["SHAPE"].split()[1:][0].split('(')[1])
+            lat.append(response["result"][i]["SHAPE"].split()[1:][1].split(')')[0])
+    #----END Loop----
 
     #Creating dataframe of all records
     dict = {"Cell_Type": cell_type,
