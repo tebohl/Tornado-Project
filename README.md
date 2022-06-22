@@ -11,3 +11,5 @@
 ### Dataset:
 
 https://www.ncdc.noaa.gov/swdiws/
+
+![kansas](imgs/kansas.jpg)
