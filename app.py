@@ -1,25 +1,41 @@
+# Dependencies
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
 import tornado_pull
 
 app = Flask(__name__)
 
-conn = "mongodb://localhost:27017/phone_app"
+# set inline
+mongo = PyMongo(app, uri="mongodb://localhost:27017/tornado_app")
 
-app.config["MONGO_URI"] = conn
-mongo = PyMongo(app)
+# create a collection, lazy loading
+tornado_collection = mongo.db.tornado_info
 
 @app.route("/")
 def index():
-    tornadoes = mongo.db.tornadoes.find_one()    
-    return render_template("index.html", tornado_df=tornadoes)
+    # find one document from our mongo db and return it.
+    tornado_results = tornado_collection.find_one()
+    # pass that listing to render_template
+    return render_template("index.html", tornado_info=tornado_results)
 
-@app.route("/scrape")
-def scraper():
-    tornadoes = mongo.db.tornadoes
-    tornado_df = tornado_pull.pull()
-    tornadoes.update_many({}, {"$set": tornado_df},upsert=True)
-    return redirect("/")
+# set our path to /pull
+@app.route("/pull")
+def pull():
+    # call the pull function in our tornado_pull file. This will pull the data and save to mongo.
+    tornado_data = tornado_pull.pull()
+    # update with the data or create&insert if collection doesn't exist
+    tornado_collection.update_one({}, {"$set": tornado_data}, upsert=True)
+    # return a message to our page so we know it was successful.
+    return redirect("/", code=302)
+
+#route sending data from geojson
+@app.route("/api/v1.0/tornadogeo")
+def tornadogeo():
+        with open("./static/data/tornadoes.geojson") as file:
+            json_decoded = json.load(file)
+
+        return json_decoded
+
 
 if __name__ == "__main__":
     app.run(debug=True)
