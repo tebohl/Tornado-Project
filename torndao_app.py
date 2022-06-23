@@ -28,6 +28,14 @@ def pull():
     # return a message to our page so we know it was successful.
     return redirect("/", code=302)
 
+#route sending data from geojson
+@app.route("/api/v1.0/tornadogeo")
+def tornadogeo():
+        with open("./static/data/tornadoes.geojson") as file:
+            json_decoded = json.load(file)
+
+        return json_decoded
+
 
 if __name__ == "__main__":
     app.run(debug=True)
