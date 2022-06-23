@@ -20,29 +20,30 @@ In this project, we extracted data for Level 3 tornados from the last 2 months f
 
 ### Dataset:
 
-Data was pulled using the below API.   
-Some notes on the data:  
-- Level 3 tornados have wind speeds between 136 and 165 mph (218 and 266 km/h)
-- We retained the following columns:    
-            Cell_Type: Type of rotation, TVS indicates torndao  
-            Shape: Point (lon, lat)  
-            Max_Shear: Change in wind speed and/or direction with height  
-            WSR_ID: ID of the data collecting tower/radar  
-            MXDV: Maximum Delta-Velocity describes intensity of storm  
-            Cell_ID: ID of the storm  
-            zTime: measure of time used in meterology  
-            Azimuth: Angular irection of storm, in degrees  
-            Range: Range of storm's path in nautical miles  
-- We added the following columns:  
-            Latitude  
-            Longitude  
-            Primary Key combining Cell_ID and date  
-            Date  
-            Time  
-            Year  
-            Month  
+Data was pulled using the below API. 
 
 https://www.ncdc.noaa.gov/swdiws/
 
+Some notes on the data:  
+- Level 3 tornados have wind speeds between 136 and 165 mph (218 and 266 km/h)
+- We retained the following columns:  
+&nbsp;&nbsp;&nbsp;&nbsp;Cell_Type: Type of rotation, TVS indicates torndao  
+&nbsp;&nbsp;&nbsp;&nbsp;Shape: Point (lon, lat)  
+&nbsp;&nbsp;&nbsp;&nbsp;Max_Shear: Change in wind speed and/or direction with height  
+&nbsp;&nbsp;&nbsp;&nbsp;WSR_ID: ID of the data collecting tower/radar  
+&nbsp;&nbsp;&nbsp;&nbsp;MXDV: Maximum Delta-Velocity describes intensity of storm  
+&nbsp;&nbsp;&nbsp;&nbsp;Cell_ID: ID of the storm  
+&nbsp;&nbsp;&nbsp;&nbsp;zTime: measure of time used in meterology  
+&nbsp;&nbsp;&nbsp;&nbsp;Azimuth: Angular irection of storm, in degrees  
+&nbsp;&nbsp;&nbsp;&nbsp;Range: Range of storm's path in nautical miles  
+
+- We added the following columns:  
+&nbsp;&nbsp;&nbsp;&nbsp;Latitude  
+&nbsp;&nbsp;&nbsp;&nbsp;Longitude  
+&nbsp;&nbsp;&nbsp;&nbsp;Primary Key combining Cell_ID and date  
+&nbsp;&nbsp;&nbsp;&nbsp;Date  
+&nbsp;&nbsp;&nbsp;&nbsp;Time  
+&nbsp;&nbsp;&nbsp;&nbsp;Year  
+&nbsp;&nbsp;&nbsp;&nbsp;Month  
 
 ![kansas](imgs/kansas.jpg)
