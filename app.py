@@ -21,7 +21,7 @@ def index():
 # set our path to /pull
 @app.route("/pull")
 def pull():
-    # call the pull function in our scrape_mars file. This will pull the data and save to mongo.
+    # call the pull function in our tornado_pull file. This will pull the data and save to mongo.
     tornado_data = tornado_pull.pull()
     # update with the data or create&insert if collection doesn't exist
     tornado_collection.update_one({}, {"$set": tornado_data}, upsert=True)

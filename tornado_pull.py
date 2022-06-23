@@ -112,4 +112,4 @@ def pull():
     #convert df back to dictionary for app.py
     tornado_dict = df.to_dict()
 
-    return tornado_dict
+    return dict
