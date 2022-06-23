@@ -27,13 +27,13 @@ https://www.ncdc.noaa.gov/swdiws/
 Some notes on the data:  
 - Level 3 tornadoes have wind speeds between 136 and 165 mph (218 and 266 km/h)
 - We retained the following columns:  
-&nbsp;&nbsp;&nbsp;&nbsp;Cell_Type: Type of rotation, TVS indicates torndao  
+&nbsp;&nbsp;&nbsp;&nbsp;Cell_Type: Type of rotation, TVS indicates tornado  
 &nbsp;&nbsp;&nbsp;&nbsp;Shape: Point (lon, lat)  
 &nbsp;&nbsp;&nbsp;&nbsp;Max_Shear: Change in wind speed and/or direction with height  
 &nbsp;&nbsp;&nbsp;&nbsp;WSR_ID: ID of the data collecting tower/radar  
 &nbsp;&nbsp;&nbsp;&nbsp;MXDV: Maximum Delta-Velocity describes intensity of storm  
 &nbsp;&nbsp;&nbsp;&nbsp;Cell_ID: ID of the storm  
-&nbsp;&nbsp;&nbsp;&nbsp;zTime: mMasure of time used in meterology  
+&nbsp;&nbsp;&nbsp;&nbsp;zTime: Measure of time used in meterology  
 &nbsp;&nbsp;&nbsp;&nbsp;Azimuth: Angular direction of storm, in degrees  
 &nbsp;&nbsp;&nbsp;&nbsp;Range: Range of storm's path in nautical miles  
 
