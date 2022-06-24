@@ -18,6 +18,19 @@
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin="" />
 
+    <!-- Slider only -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"></script>
+    <script>
+    $( function() {
+      $( "#slider" ).slider();
+    } );
+    </script>
+
     
 
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -86,10 +99,10 @@
     <div>
       <h3 class="float-md-start mb-0">Tornadoes!</h3>
       <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link fw-bold py-1 px-0" href="../index.html">Home</a>
+        <a class="nav-link fw-bold py-1 px-0" href="/">Home</a>
         <a class="nav-link fw-bold py-1 px-0" href="#">Visual 1</a>
-        <a class="nav-link fw-bold py-1 px-0" href="#">Visual 2</a>
-        <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="tracking.html">Storm Tracking</a>
+        <a class="nav-link fw-bold py-1 px-0" href="/intensity">Intensity</a>
+        <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="/tracking">Storm Tracking</a>
       </nav>
     </div>
   </header>
