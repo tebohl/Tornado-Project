@@ -28,14 +28,28 @@ def pull():
     # return a message to our page so we know it was successful.
     return redirect("/", code=302)
 
-#route sending data from geojson
-@app.route("/api/v1.0/tornadogeo")
-def tornadogeo():
-        with open("./static/data/tornadoes.geojson") as file:
-            json_decoded = json.load(file)
+@app.route("/tracking")
+def tracking():
+    # find one document from our mongo db and return it.
+    tornado_results = tornado_collection.find_one()
+    # pass that listing to render_template
+    return render_template("tracking.html", tornado_info=tornado_results)
 
-        return json_decoded
+@app.route("/intensity")
+def intensity():
+    # find one document from our mongo db and return it.
+    tornado_results = tornado_collection.find_one()
+    # pass that listing to render_template
+    return render_template("intensity-plot.html", tornado_info=tornado_results)
 
+
+# #route sending data from geojson
+# @app.route("/api/v1.0/tornadogeo")
+# def tornadogeo():
+#         with open("./static/data/tornadoes.geojson") as file:
+#             json_decoded = json.load(file)
+
+#         return json_decoded
 
 if __name__ == "__main__":
     app.run(debug=True)
