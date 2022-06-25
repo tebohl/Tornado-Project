@@ -1,8 +1,7 @@
 //Use the D3 library to read in samples.json from the URL
-const tornado_data = "../../static/data/tornadoes.json" //change this to reference the mongo_db
-d3.json(tornado_data).then(init(tornado_data));
 
-function init(data) {
+function init() {
+    d3.json("/api/intensity").then(function (data){
     let x = [];
     let y = [];
     for (let i = 0; i<data.length; i++) {
@@ -19,6 +18,8 @@ function init(data) {
     
     let data = [trace1];
     Plotly.newPlot("plot", data);
+})
 };
 
-init(); 
+init();
+
