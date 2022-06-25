@@ -46,10 +46,10 @@ def intensity():
 #route sending data from geojson
 @app.route("/api/v1.0/tornadogeo")
 def tornadogeo():
-        with open("./static/data/tornadoes.geojson") as file:
+    with open("./static/data/tornadoes.geojson") as file:
             json_decoded = json.load(file)
 
-        return json_decoded
+    return json_decoded
 
 
 if __name__ == "__main__":
