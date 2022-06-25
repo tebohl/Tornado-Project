@@ -47,14 +47,13 @@ def intensity():
     return render_template("intensity-plot.html", tornado_info=tornado_results)
 
 
-#route sending data from geojson
-@app.route("/api/v1.0/tornadogeo")
-def tornadogeo():
-        with open("./static/data/tornadoes.geojson") as file:
-            json_decoded = json.load(file)
+# #route sending data from geojson
+# @app.route("/api/v1.0/tornadogeo")
+# def tornadogeo():
+#         with open("./static/data/tornadoes.geojson") as file:
+#             json_decoded = json.load(file)
 
-        return json_decoded
-
+#         return json_decoded
 
 if __name__ == "__main__":
     app.run(debug=True)
