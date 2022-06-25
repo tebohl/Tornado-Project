@@ -1,7 +1,9 @@
 # Dependencies
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, jsonify
+import json
 from flask_pymongo import PyMongo
 import tornado_pull
+
 
 app = Flask(__name__)
 
@@ -46,6 +48,11 @@ def intensity():
     # pass that listing to render_template
     return render_template("intensity-plot.html", tornado_info=tornado_results)
 
+@app.route("/api/intensity")
+def intensity_api():
+    # find one document from our mongo db and return it.
+    tornado_results = tornado_collection.find_one()
+    return json.dumps(tornado_results)
 
 # #route sending data from geojson
 # @app.route("/api/v1.0/tornadogeo")
@@ -53,7 +60,7 @@ def intensity():
 #         with open("./static/data/tornadoes.geojson") as file:
 #             json_decoded = json.load(file)
 
-#         return json_decoded
+#         return jsonify()
 
 if __name__ == "__main__":
     app.run(debug=True)
