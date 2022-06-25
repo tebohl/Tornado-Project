@@ -51,16 +51,18 @@ def intensity():
 @app.route("/api/intensity")
 def intensity_api():
     # find one document from our mongo db and return it.
-    tornado_results = tornado_collection.find_one()
-    return json.dumps(tornado_results)
+    tornado_results = tornado_collection.find_one({},{'_id':0})
+    return json.dumps([tornado_results])
+
 
 # #route sending data from geojson
 # @app.route("/api/v1.0/tornadogeo")
 # def tornadogeo():
-#         with open("./static/data/tornadoes.geojson") as file:
+#     with open("./static/data/tornadoes.geojson") as file:
 #             json_decoded = json.load(file)
 
-#         return jsonify()
+#     return json_decoded
+
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,24 +1,25 @@
 //Use the D3 library to read in samples.json from the URL
 
 function init() {
-    d3.json("/api/intensity").then(function (data){
-    let x = [];
-    let y = [];
-    for (let i = 0; i<data.length; i++) {
-        let tornado = data[i];
-        x.push(tornado.Date);
-        y.push(tornado.Max_Shear);
-    }
+    d3.json("/api/intensity").then(function(data){
+    console.log(data)
+    let x = data[0].Date;
+    let y = data[0].Max_Shear;
+    // for (let i = 0; i<data[0].length; i++) {
+    //     let tornado = data[i];
+    //     x.push(tornado.Date);
+    //     y.push(tornado.Max_Shear);
+    // }
     let trace1 = {
         x: x,
         y: y, 
         mode: 'markers',
         type: 'scatter'
     };
-    
-    let data = [trace1];
-    Plotly.newPlot("plot", data);
-})
+    console.log(x,y)
+    let data1 = [trace1];
+    Plotly.newPlot("plot", data1);
+});
 };
 
 init();
