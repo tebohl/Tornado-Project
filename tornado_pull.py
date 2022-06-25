@@ -95,20 +95,36 @@ def pull():
             "Lon": lon
         }
 
-    df = pd.DataFrame(dict)
-    df
+    # df = pd.DataFrame(dict)
 
-    #Creating additional columns
-    df['Date']=pd.to_datetime(df['zTime']).dt.date
-    df['Time']=pd.to_datetime(df['zTime']).dt.time
-    df['Year']=pd.to_datetime(df['zTime']).dt.year
-    df['Month']=pd.to_datetime(df['zTime']).dt.month
+    # #Creating additional columns
+    # df['Date']=pd.to_datetime(df['zTime']).dt.date
+    # df['Time']=pd.to_datetime(df['zTime']).dt.time
+    # df['Year']=pd.to_datetime(df['zTime']).dt.year
+    # df['Month']=pd.to_datetime(df['zTime']).dt.month
+    date = []
+    time = []
+    year = []
+    month = []
+    for x in ztime:
+        date.append(datetime.datetime.strptime(x, '%Y-%m-%dT%H:%M:%SZ').strftime('%m/%d/%Y'))
+        time.append(datetime.datetime.strptime(x, '%Y-%m-%dT%H:%M:%SZ').strftime('%H:%M:%S'))
+        year.append(datetime.datetime.strptime(x, '%Y-%m-%dT%H:%M:%SZ').year)
+        month.append(datetime.datetime.strptime(x, '%Y-%m-%dT%H:%M:%SZ').month)
+    dict['Date']= date
+    dict['Time']= time
+    dict['Year']= year
+    dict['Month']= month
 
 
     #Primary Key to id tornados
-    df['PKID']=df['Cell_ID']+df['zTime'].astype(str)
+    # df['PKID']=df['Cell_ID']+df['zTime'].astype(str)
+    pkid = []
+    for x in range(len(cell_id)):
+        pkid.append(cell_id[x] + ztime[x])
+    dict['PKID'] = pkid
 
     #convert df back to dictionary for app.py
-    tornado_dict = df.to_dict()
+    # dict = df.to_dict()
 
     return dict
