@@ -17,16 +17,13 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin="" />
+    <!-- D3 JavaScript -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
       
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
-
-    <!-- D3 JavaScript -->
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-
-
 
     <style>
       .bd-placeholder-img {
@@ -93,10 +90,10 @@
     <div>
       <h3 class="float-md-start mb-0">Tornadoes!</h3>
       <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link fw-bold py-1 px-0" href="../index.html">Home</a>
-        <a class="nav-link fw-bold py-1 px-0" href="#">Visual 1</a>
-        <a class="nav-link fw-bold py-1 px-0" href="#">Visual 2</a>
-        <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="tracking.html">Storm Tracking</a>
+        <a class="nav-link fw-bold py-1 px-0" href="/">Home</a>
+        <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="/heat">Heat Map</a>
+        <a class="nav-link fw-bold py-1 px-0" href= "/intensity">Intensity</a>
+        <a class="nav-link fw-bold py-1 px-0" href="/tracking">Storm Tracking</a>
       </nav>
     </div>
   </header>
@@ -126,6 +123,7 @@
 <!-- Our JavaScript and js plugin-->
 <script type="text/javascript" src="static/js/markers-heat.js"></script>
 <script src="static/js/leaflet-heatmap.js"></script>
+
 
   </body>
 </html>
