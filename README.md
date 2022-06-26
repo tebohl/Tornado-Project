@@ -46,4 +46,21 @@ Some notes on the data:
 &nbsp;&nbsp;&nbsp;&nbsp;Year  
 &nbsp;&nbsp;&nbsp;&nbsp;Month  
 
+
+### Visuals:
+
+#### Heat Map:
+This plot shows the density of tornadoes based on their respective latitude and longitude points.
+![heatmap](imgs/heatmap.png)
+
+#### Intensity Plots:
+![image](imgs/image.png)
+
+![image2](imgs/image2.png)
+
+#### Storm Tracking:
+
+
+
+
 ![kansas](imgs/kansas.jpg)

@@ -5,17 +5,17 @@ function heat() {
     // //list for lat, lon points for heat layer
     var alllatlong= [];
     // lists for cfg
-    heatLat= [];
-    heatLon= [];
+    //heatLat= [];
+    //heatLon= [];
     // add lat and lon to lists
-    heatLat.push(data[0].Lat);
-    heatLon.push(data[0].Lon);
+    //heatLat.push(data[0].Lat);
+    //heatLon.push(data[0].Lon);
     //console.log(heatLat);
 
     var latdata = data[0].Lat
     var londata = data[0].Lon
     var ids = data[0].PKID;
-    //loop through data to create dictionary of lat lon points per plug in template
+    //loop through data to create list of lat lon points
     for (var i = 0; i < ids.length; i++) {
       //list with lat long point
       eachlatlong = [latdata[i], londata[i]];
@@ -37,17 +37,17 @@ function heat() {
     var myMap = L.map('map', {
     center: [ 37.09, -95.71 ],
     zoom: 5,
-    layers: [baseLayer, heatmap]
+    layers: [baseLayer]
     });
 
     var heatmap = L.webGLHeatmap({
-      size: 800,
-      units: 'px'
+      opacity: 0.8,
     });
 
     heatmap.setData(alllatlong);
 
-    map.addLayer(heatmap);
+    myMap.addLayer( heatmap );
+    
 
     // Define a baseMaps object to hold our base layers
     var baseMaps = {
