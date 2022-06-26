@@ -38,19 +38,21 @@ def intensity():
     # pass that listing to render_template
     return render_template("intensity-plot.html", tornado_info=tornado_results)
 
+@app.route("/heat")
+def heat():
+    # find one document from our mongo db and return it.
+    tornado_results = tornado_collection.find_one()
+    # pass that listing to render_template
+    return render_template("markers-heat.html", tornado_info=tornado_results)
+
+
 @app.route("/api/intensity")
 def intensity_api():
-    # find one document from our mongo db and return it.
+    # convert mongo doc to json for visuals
     tornado_results = tornado_collection.find_one({}, {'_id':0})
     return json.dumps([tornado_results])
 
-# #route sending data from geojson
-# @app.route("/api/v1.0/tornadogeo")
-# def tornadogeo():
-#         with open("./static/data/tornadoes.geojson") as file:
-#             json_decoded = json.load(file)
 
-#         return jsonify()
 
 if __name__ == "__main__":
     app.run(debug=True)
