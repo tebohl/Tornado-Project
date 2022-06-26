@@ -1,167 +1,9 @@
 // Initialize the necessary LayerGroups
 let layers = {
   markers: new L.LayerGroup()
-  // plates: new L.LayerGroup()
 };
-
-// console.log(markers)
-
-// Set data source for tornadoes data
-const queryUrl = "../../static/data/tornadoes.json"
-
-var twisterIcon = L.icon({
-  iconUrl: '../../static/img/twister.png',
-
-  iconSize:     [36, 24] // size of the icon
-  // shadowSize:   [50, 64], // size of the shadow
-  // iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-  // shadowAnchor: [4, 62],  // the same for the shadow
-  // popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-});
-
-// Perform a GET request to the query URL/
-d3.json(queryUrl).then(function(data) {
-  createMarkers(data);
-});
-
-function createMarkers(data) {
-  for (var i = 0; i < 100; i++) {
-  //   let point = L.circle([data[i].Lat, data[i].Lon], {
-  //     color: "red",
-  //     fillColor: "red",
-  //     fillOpacity: 0.75,
-  //     radius: 10
-  //   })
-    let direction = parseFloat(data[i].Azimuth);
-    
-    let point = L.marker(L.latLng(data[i].Lat, data[i].Lon), {
-      // radius: 10,
-      icon: twisterIcon,
-      rotationAngle: direction
-  });
-
-    point.bindPopup("<h3>" + data[i].Shape +
-        "</h3><hr><p> <b>Date/Time: </b>" + data[i].zTime + "</p>" +
-        "<p> <b>Angle:</b> " + data[i].Azimuth + "; <b>MXDV:</b> " + data[i].MXDV + "</p>");
-
-    point.addTo(layers.markers);
-}
-}
-
-
-// }
-
-// // Set data source for earthquake data
-// const queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
-
-// // Perform a GET request to the query URL/
-// d3.json(queryUrl).then(function(data) {
-//   createFeatures(data.features);
-// });
-
-// function createFeatures(earthquakeData) {
-
-//   // Give each earthquake a popup describing the place, time, magnitude, and depth of the earthquake
-//   function popUpMsg(feature, layer) {
-//     layer.bindPopup("<h3>" + feature.properties.place +
-//         "</h3><hr><p> <b>Date/Time: </b>" + new Date(feature.properties.time) + "</p>" +
-//         "<p> <b>Magnitude:</b> " + feature.properties.mag + "; <b>Depth:</b> " + feature.geometry.coordinates[2] + "</p>");
-//     }
-
-//   // Create a GeoJSON layer containing the features array on the earthquakeData object
-//   // Run the popUpMsg function once for each piece of data in the array
-//   let earthquakes = L.geoJSON(earthquakeData, {
-//           pointToLayer: function (feature, latlng) {
-//               if (feature.geometry.coordinates[2] >= 90) {
-//                   return L.circleMarker(latlng, {
-//                     radius: feature.properties.mag * 5,
-//                     fillColor: "#E74C3C",
-//                     color: "black",
-//                     weight: 1,
-//                     opacity: 1,
-//                     fillOpacity: 0.8
-//                   });
-            
-//                 } else if (feature.geometry.coordinates[2] >= 70) {
-//                   return L.circleMarker(latlng, {
-//                     radius: feature.properties.mag * 5,
-//                     fillColor: "#DC7633",
-//                     color: "black",
-//                     weight: 1,
-//                     opacity: 1,
-//                     fillOpacity: 0.8
-//                   });
-            
-//                 } else if (feature.geometry.coordinates[2] >= 50) {
-//                   return L.circleMarker(latlng, {
-//                     radius: feature.properties.mag * 5,
-//                     fillColor: "#F39C12",
-//                     color: "black",
-//                     weight: 1,
-//                     opacity: 1,
-//                     fillOpacity: 0.8
-//                   });
-                                      
-//                 } else if (feature.geometry.coordinates[2] >= 30) {
-//                     return L.circleMarker(latlng, {
-//                     radius: feature.properties.mag * 5,
-//                     fillColor: "#F1C40F",
-//                     color: "black",
-//                     weight: 1,
-//                     opacity: 1,
-//                     fillOpacity: 0.8
-//                   });
-                                      
-//                 } else if (feature.geometry.coordinates[2] >= 10) {
-//                     return L.circleMarker(latlng, {
-//                     radius: feature.properties.mag * 5,
-//                     fillColor: "#DFFF00",
-//                     color: "black",
-//                     weight: 1,
-//                     opacity: 1,
-//                     fillOpacity: 0.8
-//                   });
-              
-//                 } else {
-//                     return L.circleMarker(latlng, {
-//                     radius: feature.properties.mag * 5,
-//                     fillColor: "#2ECC71",
-//                     color: "black",
-//                     weight: 1,
-//                     opacity: 1,
-//                     fillOpacity: 0.8
-//                   });
-//                 } 
-//           },
-//           onEachFeature: popUpMsg
-//       });
+  // plates: new L.LayerGroup()
   
-//   // Add to the Earthquakes layer
-//   earthquakes.addTo(layers.quakes);
-// };
-
-// // Set data source for techtonic data
-// const tectUrl = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_plates.json"
-
-// // Perform a GET request to the query URL/
-// d3.json(tectUrl).then(function (data) {
-//   // Once we get a response, send the data.features object to the createTects function
-//   createTects(data.features);
-// });
-
-// function createTects(tectData) {
-
-//   // Create a GeoJSON layer that contains the features array on the tectData object
-//   // Assign color and set fill opacity to 0
-//   var tectplates = L.geoJSON(tectData, {
-//     onEachFeature: function (feature, layer) {
-//       layer.bindTooltip(feature.geometry).setStyle({color :'#FFA500', fillOpacity: 0})
-//   }});
-
-//   // Add to the Tectonic Plates layer
-//   tectplates.addTo(layers.plates);
-// }
-
 // Create the base layers
 let grayScale = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
   attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -208,42 +50,276 @@ L.control.layers(baseMaps, overlayMaps, {
   collapsed: false
 }).addTo(map);
 
-// Add slider
-var sliderControl = L.control.sliderControl({
-  position: "topleft",
-  layer: layers.markers
-});
+// Set data source for tornadoes data
+const queryUrl = "../../static/data/tornadoes.json"
 
-map.addControl(sliderControl);
+// let dropdownValue = null
+// let results = null
+let resultCount = null
 
-sliderControl.startSlider();
+// Set date selector at load
+function init(){
+  // Code that runs once (only on page load or refresh)
+  // Fetch the JSON data and console log it to confirm retrieval
 
-// Add legend
-function getColor(d) {
-  if (d === '90') {return "#E74C3C"}
-  else if (d === '70') {return "#DC7633"}
-  else if (d === '50') {return "#F39C12"}
-  else if (d === '30') {return "#F1C40F"}
-  else if (d === '10') {return "#DFFF00"}
-  else if (d === '-10') {return "#2ECC71"}
-  else {return "#FFEDA0"};
+  d3.json(queryUrl).then(function(data) {
+
+      const groups = data.reduce((groups, cell) => {
+        const date = cell.zTime.split('T')[0];
+        if (!groups[date]) {
+          groups[date] = [];
+        }
+        groups[date].push(cell);
+        return groups;
+      }, {});
+    
+      // Edit: to add it in the array format instead
+      const dateCells = Object.keys(groups).map((date) => {
+        return {
+          date,
+          cells: groups[date]
+        };
+      });
+    
+      console.log(dateCells);
+
+      // Populate the dropdown menu with the available dates
+      let date_select = d3.select('#selDataset');
+      for(let i=0; i<dateCells.length; i++){
+          date_select.append("option")
+          .text(dateCells[i].date)
+          .attr("value", dateCells[i].date)
+      }
+      
+      let dropdownValue = dateCells[0].date
+      let results = dateCells.filter(i=> i.date == dropdownValue) // .filter(i=> i.Time > sliderVal - )
+      let initialDate = dateCells[0].date
+
+      // Create the slidebar
+      let recordCt = results[0].cells.length
+
+      let begin = results[0].cells[0].zTime
+      let end = results[0].cells[recordCt - 1].zTime
+    
+      console.log(results[0].cells[0].zTime)
+      
+    
+      // let beginTime = dateCells[0].cells[0].Time
+      // var array = beginTime.split(":");
+      // var begin = (parseInt(array[0], 10) * 60 * 60) + (parseInt(array[1], 10) * 60) + parseInt(array[2], 10)
+    
+      // let endTime = dateCells[0].cells[recordCt - 1].Time
+      // var array = endTime.split(":");
+      // var end = (parseInt(array[0], 10) * 60 * 60) + (parseInt(array[1], 10) * 60) + parseInt(array[2], 10)
+      // console.log(end)
+    
+      function timestamp(str) {
+        return new Date(str).getTime();
+      }
+      let calc = timestamp(begin)
+      console.log(calc)
+      // let startRange = new Date(begin).setUTCHours( 0,0,0,0 );
+      // console.log(startRange)
+    
+      // let endRange = new Date(begin).setUTCHours( 23,59,59,59 );
+      // console.log(end.toUTCString())
+    
+      var slidervar = document.getElementById('slider');
+      noUiSlider.create(slidervar, {
+          connect: true,
+          start: [ timestamp(begin), timestamp(end) ],
+          step: 60 * 60 * 1000,
+          range: {
+              min: timestamp(begin),
+              max: timestamp(end)
+          }
+        });
+    
+      document.getElementById('input-number-min').setAttribute("value", timestamp(begin));
+      document.getElementById('input-number-max').setAttribute("value", timestamp(end)); 
+    
+      var inputNumberMin = document.getElementById('input-number-min');
+      var inputNumberMax = document.getElementById('input-number-max');
+      inputNumberMin.addEventListener('change', function(){
+          slidervar.noUiSlider.set([this.value, null]);
+      });
+      inputNumberMax.addEventListener('change', function(){
+          slidervar.noUiSlider.set([null, this.value]);
+      });
+
+      // Run functions to generate plots
+      createMap(results);
+    });
+}
+
+// Function called, runs init instructions
+// Runs only on load and refresh of browser page
+init();
+
+// Function that runs whenever the dropdown is changed
+function optionChanged(newDate){
+  layers.markers.clearLayers();
+  
+  // code that updates graphics
+  d3.json(queryUrl).then(function(data) {
+
+    const groups = data.reduce((groups, cell) => {
+      const date = cell.zTime.split('T')[0];
+      if (!groups[date]) {
+        groups[date] = [];
+      }
+      groups[date].push(cell);
+      return groups;
+    }, {});
+  
+    // Edit: to add it in the array format instead
+    const dateCells = Object.keys(groups).map((date) => {
+      return {
+        date,
+        cells: groups[date]
+      };
+    });
+  
+  let dropdownValue = newDate;
+  let results = dateCells.filter(i=> i.date == dropdownValue)
+  let resultCount = results[0].cells.length
+
+  createMap(results);
+}
+)};
+
+      
+      
+
+slidervar.noUiSlider.on('update', function( values, handle ) {
+  //handle = 0 if min-slider is moved and handle = 1 if max slider is moved
+  if (handle==0){
+      document.getElementById('input-number-min').value = values[0];
+  } else {
+      document.getElementById('input-number-max').value =  values[1];
   }
 
-var legend = L.control({position: 'bottomright'});
+  rangeMin = document.getElementById('input-number-min').value;
+  rangeMax = document.getElementById('input-number-max').value;
 
-legend.onAdd = function (map) {
+  //   for(let j=0; j<recordCt; j++){
+  //     date_select.append("option")
+  //     .text(dateCells[i].date)
+  //     .attr("value", dateCells[i].date)
+  // } 
+  //   results = results.filter(i=> timestamp(i[0].cells[i].zTime) <= rangeMax).filter(i=> timestamp(i[0].cells[i].zTime) >= rangeMin);
+  //   // console.log(slideResults)
+  //   // createMap(slideResults)
+  cellData = results[0].cells
+  results = cellData.filter(i=> timestamp(i.zTime) <= rangeMax).filter(i=> timestamp(i.zTime) >= rangeMin);
+  // results = results[0].cells.filter(i=> timestamp([i].zTime) <= rangeMax).filter(i=> timestamp([i].zTime) >= rangeMin);
+  console.log(results)
+  //and repopulate it
+  // popplaces = new L.geoJson(exp_popplaces,{
+  //     onEachFeature: pop_popplaces,
+  //         filter:
+  //             function(feature, layer) {
+  //                  return (feature.properties.pop_max <= rangeMax) && (feature.properties.pop_max >= rangeMin);
+  //             },
+  //     pointToLayer: popplaces_marker
+  // })
+  //and back again into the cluster group
+  // cluster_popplaces.addLayer(popplaces);
+  createMap(results)
+//we will definitely do more here...wait
+})
+
+
+
+
+function createMap(results){
+
+var twisterIcon = L.icon({
+  iconUrl: '../../static/img/twister.png',
+
+  iconSize:     [36, 24] // size of the icon
+  // shadowSize:   [50, 64], // size of the shadow
+  // iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+  // shadowAnchor: [4, 62],  // the same for the shadow
+  // popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+for (var i = 0; i < results.length; i++) {
+
+    if (results[i].Azimuth < 180){
+      var twisterIcon = L.icon({
+        iconUrl: '../../static/img/twister.png',
+      
+        iconSize:     [24, 36] // size of the icon
+        // shadowSize:   [50, 64], // size of the shadow
+        // iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+        // shadowAnchor: [4, 62],  // the same for the shadow
+        // popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+      })}
+    else {
+      var twisterIcon = L.icon({
+        iconUrl: '../../static/img/twister-flip.png',
+      
+        iconSize:     [24, 36] // size of the icon
+        // shadowSize:   [50, 64], // size of the shadow
+        // iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+        // shadowAnchor: [4, 62],  // the same for the shadow
+        // popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+      })
+    };
+
+    
   
-  var div = L.DomUtil.create('div', 'info legend');
-  labels = ['-10','10','30', '50','70','90'];
+    let direction = parseFloat(results[i].Azimuth);
+    
+    let point = L.marker(L.latLng(results[i].Lat, results[i].Lon), {
+      icon: twisterIcon,
+      rotationAngle: direction
+  });
 
-  for (var i = 0; i < labels.length; i++) {
-      div.innerHTML += '<i style="background:' + getColor(labels[i]) +
-      '"></i> ' + labels[i] + (labels[i + 1] ? '&ndash;' + labels[i + 1] + '<br>' : '+');
-      }
-      return div;
-      };
+    point.bindPopup("<h3>" + results[i].Shape +
+        "</h3><hr><p> <b>Date/Time: </b>" + results[i].zTime + "</p>" +
+        "<p> <b>Direction (degrees):</b> " + results[i].Azimuth + "; <b>MXDV:</b> " + results[i].MXDV + "</p>");
 
-legend.addTo(map);
+    point.addTo(layers.markers);
+};
+
+// // Add slider
+// var sliderControl = L.control.sliderControl({
+//   position: "topleft",
+//   layer: layers.markers
+// });
+
+// map.addControl(sliderControl);
+
+// sliderControl.startSlider();
+
+// // Add legend
+// function getColor(d) {
+//   if (d === '90') {return "#E74C3C"}
+//   else if (d === '70') {return "#DC7633"}
+//   else if (d === '50') {return "#F39C12"}
+//   else if (d === '30') {return "#F1C40F"}
+//   else if (d === '10') {return "#DFFF00"}
+//   else if (d === '-10') {return "#2ECC71"}
+//   else {return "#FFEDA0"};
+//   }
+
+// var legend = L.control({position: 'bottomright'});
+
+// legend.onAdd = function (map) {
+  
+//   var div = L.DomUtil.create('div', 'info legend');
+//   labels = ['-10','10','30', '50','70','90'];
+
+//   for (var i = 0; i < labels.length; i++) {
+//       div.innerHTML += '<i style="background:' + getColor(labels[i]) +
+//       '"></i> ' + labels[i] + (labels[i + 1] ? '&ndash;' + labels[i + 1] + '<br>' : '+');
+//       }
+//       return div;
+//       };
+
+// legend.addTo(map);
 
 // Custom marker code
 (function() {
@@ -303,4 +379,8 @@ legend.addTo(map);
       }
   });
 })();
+}
+
+
+
 

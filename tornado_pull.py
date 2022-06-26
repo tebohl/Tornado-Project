@@ -121,11 +121,11 @@ def pull():
     # df['PKID']=df['Cell_ID']+df['zTime'].astype(str)
     pkid = []
     for x in range(len(cell_id)):
-        pkid.append(cell_id[x] + ztime[x])
+        pkid.append(cell_id[x] + date[x])
     dict['PKID'] = pkid
 
     #convert df back to dictionary for app.py
     # dict = df.to_dict()
 
-    return dict.keys()
+    return dict
 
