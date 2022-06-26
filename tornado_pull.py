@@ -127,5 +127,5 @@ def pull():
     #convert df back to dictionary for app.py
     # dict = df.to_dict()
 
-    return dict.keys()
+    return dict
 

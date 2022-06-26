@@ -24,16 +24,6 @@ def index():
     # pass that listing to render_template
     return render_template("index.html", tornado_info=tornado_results)
 
-# # set our path to /pull
-# @app.route("/pull")
-# def pull():
-#     # call the pull function in our tornado_pull file. This will pull the data and save to mongo.
-#     tornado_data = tornado_pull.pull()
-#     # update with the data or create&insert if collection doesn't exist
-#     tornado_collection.update_one({}, {"$set": tornado_data}, upsert=True)
-#     # return a message to our page so we know it was successful.
-#     return redirect("/", code=302)
-
 @app.route("/tracking")
 def tracking():
     # find one document from our mongo db and return it.
@@ -51,18 +41,16 @@ def intensity():
 @app.route("/api/intensity")
 def intensity_api():
     # find one document from our mongo db and return it.
-    tornado_results = tornado_collection.find_one({},{'_id':0})
+    tornado_results = tornado_collection.find_one({}, {'_id':0})
     return json.dumps([tornado_results])
-
 
 # #route sending data from geojson
 # @app.route("/api/v1.0/tornadogeo")
 # def tornadogeo():
-#     with open("./static/data/tornadoes.geojson") as file:
+#         with open("./static/data/tornadoes.geojson") as file:
 #             json_decoded = json.load(file)
 
-#     return json_decoded
-
+#         return jsonify()
 
 if __name__ == "__main__":
     app.run(debug=True)
