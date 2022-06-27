@@ -16,7 +16,7 @@
 * MongoDB
 
 ### Description:
-In this project, we extracted data for Level 3 tornadoes from the last 2 months from www.ncdc.noaa.gov. After cleaning, we stored the data in MongoDB and used a Python Flask API to power a web application. We created several visualizations using Leaflet that allow you to interact with the dataset.
+In this project, we extracted data for Level 3 tornadoes from the last 2 months from www.ncdc.noaa.gov. After cleaning, we stored the data in MongoDB and used a Python Flask API to power a web application. We created several visualizations using Leaflet and Plotly that allow you to interact with the dataset.
 
 ### Dataset:
 
