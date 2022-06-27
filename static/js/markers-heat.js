@@ -1,7 +1,7 @@
 function heat() {
   // Access mongo data via flask route
   d3.json("/api/intensity").then(function(data){
-    //console.log(data)
+    // console.log(data)
     // //List for lat, lon points for heat layer
     var alllatlong= [];
     // Variables for loop

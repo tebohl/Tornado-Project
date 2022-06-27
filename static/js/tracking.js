@@ -49,7 +49,7 @@ L.control.layers(baseMaps, overlayMaps, {
 }).addTo(map);
 
 // Set data source for tornadoes data
-const queryUrl = "../../static/data/tornadoes.json"
+const queryUrl = "/api/tracking"
 
 let resultCount = null
 
@@ -59,7 +59,7 @@ function init(){
   // Fetch the JSON data and console log it to confirm retrieval
 
   d3.json(queryUrl).then(function(data) {
-
+      console.log(data)
       const groups = data.reduce((groups, cell) => {
         const date = cell.zTime.split('T')[0];
         if (!groups[date]) {
