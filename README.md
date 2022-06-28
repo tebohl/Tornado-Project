@@ -16,11 +16,11 @@
 * MongoDB
 
 ### Description:
-In this project, we extracted data for Level 3 tornadoes from the last 2 months from www.ncdc.noaa.gov. After cleaning, we stored the data in MongoDB and used a Python Flask API to power a web application. We created several visualizations using Leaflet and Plotly that allow you to interact with the dataset.
+In this project, we extracted data for Level 3 tornadoes from the last 2 months from www.ncdc.noaa.gov. After cleaning, we stored the data in MongoDB and used a Python Flask API to power a web application (See file app.py). We then created several visualizations using Leaflet and Plotly that allow you to interact with the data set.
 
 ### Dataset:
 
-Data was pulled using the below API. 
+Data was retrieved using the below API. 
 
 https://www.ncdc.noaa.gov/swdiws/
 
@@ -49,18 +49,20 @@ Some notes on the data:
 
 ### Visuals:
 
+#### Storm Tracking:
+On the Cell Tracking page, you can view tornado instances based on date, as well as their movement throughout the day using the slider.
+
+![tracking](imgs/tracking.png)
+
 #### Heat Map:
-This plot shows the density of tornadoes based on their respective latitude and longitude points.
+On the Heat Map page, you'll see all of the data points plotted to show the density of the storms in particular areas.
+
 ![heatmap](imgs/heatmap.png)
 
 #### Intensity Plots:
+On the Intensity page, you'll discover how Max Shear relates to Date and Range of the storms.
+
 ![image](imgs/image.png)
 
 ![image2](imgs/image2.png)
 
-#### Storm Tracking:
-
-
-
-
-![kansas](imgs/kansas.jpg)
