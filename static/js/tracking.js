@@ -1,4 +1,4 @@
-// Initialize the necessary LayerGroups
+  // Initialize the necessary LayerGroups
 let layers = {
   markers: new L.LayerGroup()
 };
@@ -49,7 +49,7 @@ L.control.layers(baseMaps, overlayMaps, {
 }).addTo(map);
 
 // Set data source for tornadoes data
-const queryUrl = "/api/tracking"
+const queryUrl = "/api/intensity"
 
 let resultCount = null
 
@@ -58,8 +58,21 @@ function init(){
   // Code that runs once (only on page load or refresh)
   // Fetch the JSON data and console log it to confirm retrieval
 
-  d3.json(queryUrl).then(function(data) {
-      console.log(data)
+  d3.json(queryUrl).then(function(data2) {
+
+      data = []
+
+      for(let i=0; i<data2[0].Azimuth.length; i++){
+        let dict = {
+          "MXDV": data2[0].MXDV[i],
+          "zTime": data2[0].zTime[i],
+          "Azimuth": data2[0].Azimuth[i],
+          "Lat": data2[0].Lat[i],
+          "Lon": data2[0].Lon[i]
+         };
+        data.push(dict);
+      }
+
       const groups = data.reduce((groups, cell) => {
         const date = cell.zTime.split('T')[0];
         if (!groups[date]) {
@@ -141,7 +154,20 @@ function optionChanged(newDate){
   layers.markers.clearLayers();
 
   // code that updates graphics
-  d3.json(queryUrl).then(function(data) {
+  d3.json(queryUrl).then(function(data2) {
+
+    data = []
+
+    for(let i=0; i<data2[0].Azimuth.length; i++){
+      let dict = {
+        "MXDV": data2[0].MXDV[i],
+        "zTime": data2[0].zTime[i],
+        "Azimuth": data2[0].Azimuth[i],
+        "Lat": data2[0].Lat[i],
+        "Lon": data2[0].Lon[i]
+       };
+      data.push(dict);
+    }
 
     const groups = data.reduce((groups, cell) => {
       const date = cell.zTime.split('T')[0];
@@ -198,8 +224,21 @@ document.getElementById('slider-date').addEventListener('click', function () {
   var dateSlider = document.getElementById('slider-date');
   let newBegin = dateSlider.noUiSlider.get();
 
-  d3.json(queryUrl).then(function(data) {
+  d3.json(queryUrl).then(function(data2) {
 
+    data = []
+
+    for(let i=0; i<data2[0].Azimuth.length; i++){
+      let dict = {
+        "MXDV": data2[0].MXDV[i],
+        "zTime": data2[0].zTime[i],
+        "Azimuth": data2[0].Azimuth[i],
+        "Lat": data2[0].Lat[i],
+        "Lon": data2[0].Lon[i]
+       };
+      data.push(dict);
+    }
+    
     const groups = data.reduce((groups, cell) => {
       const date = cell.zTime.split('T')[0];
       if (!groups[date]) {
@@ -276,4 +315,8 @@ for (var i = 0; i < results.length; i++) {
     };
 };
 }
+// };
+
+// tracking();
+
 
