@@ -25,15 +25,17 @@ function init() {
 
         //scatterplt showing tornadoes by range v. max shear: 
         let trace2 = {
-            x: ranges,
+            x: mxdvs,
             y: max_shears, 
             mode: 'markers',
             type: 'scatter',
-            hovertext: ids
+            hovertext: ids,
+            width: 200,
+            height: 200
         };
         let layout2 = {
-            title: {text:"Range v. Maximum Wind Shear"}, 
-            xaxis: {title: {text: "Range (in nautical miles)"}}, 
+            title: {text:"Maximum Delta Velocity v. Maximum Wind Shear"}, 
+            xaxis: {title: {text: "Maximum Delta Velocity)"}}, 
             yaxis: {title: {text: "Maximum Wind Shear"}}
         };
         let data2 = [trace2];
