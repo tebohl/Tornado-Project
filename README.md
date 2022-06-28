@@ -1,6 +1,6 @@
 # Tornado-Project
 
-### Group Members:
+## Group Members:
 
 - Taylor Bohl
 - Harish Korrapati
@@ -8,17 +8,12 @@
 - Rhiana Schafer
 - Ishanjit Sidhu
 
-### Methods:
-* Python
-* HTML
-* Javascript
-* Leaflet
-* MongoDB
-
-### Description:
+## Description:
 In this project, we extracted data for Level 3 tornadoes from the last 2 months from www.ncdc.noaa.gov. After cleaning, we stored the data in MongoDB and used a Python Flask API to power a web application (See file app.py). We then created several visualizations using Leaflet and Plotly that allow you to interact with the data set.
 
-### Dataset:
+![methods](imgs/methods.png)
+
+## Dataset:
 
 Data was retrieved using the below API. 
 
@@ -52,17 +47,17 @@ Some notes on the data:
 ### Landing page:
 ![homepage](imgs/homepage.png)
 
-#### Storm Tracking:
+### Storm Tracking:
 On the Cell Tracking page, you can view tornado instances based on date, as well as their movement throughout the day using the slider.
 
 ![tracking](imgs/tracking.png)
 
-#### Heat Map:
+### Heat Map:
 On the Heat Map page, you'll see all of the data points plotted to show the density of the storms in particular areas.
 
 ![heatmap](imgs/heatmap.png)
 
-#### Intensity Plots:
+### Intensity Plots:
 On the Intensity page, you'll discover how Max Shear relates to Date and Range of the storms.
 
 ![image](imgs/image.png)
