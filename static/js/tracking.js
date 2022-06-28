@@ -2,7 +2,6 @@
 let layers = {
   markers: new L.LayerGroup()
 };
-  // plates: new L.LayerGroup()
   
 // Create the base layers
 let grayScale = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
@@ -50,10 +49,8 @@ L.control.layers(baseMaps, overlayMaps, {
 }).addTo(map);
 
 // Set data source for tornadoes data
-const queryUrl = "../../static/data/tornadoes.json"
+const queryUrl = "/api/tracking"
 
-// let dropdownValue = null
-// let results = null
 let resultCount = null
 
 // Set date selector at load
@@ -62,7 +59,7 @@ function init(){
   // Fetch the JSON data and console log it to confirm retrieval
 
   d3.json(queryUrl).then(function(data) {
-
+      console.log(data)
       const groups = data.reduce((groups, cell) => {
         const date = cell.zTime.split('T')[0];
         if (!groups[date]) {
@@ -163,7 +160,7 @@ function optionChanged(newDate){
       };
     });
   
-  // let dropdownValue = document.getElementById('selDataset').value
+
   let dropdownValue = newDate;
   let results = dateCells.filter(i=> i.date == dropdownValue)
   let resultCount = results[0].cells.length
@@ -178,7 +175,6 @@ function optionChanged(newDate){
 
   let endRange = new Date(dropdownValue).setUTCHours( 24,00,00,00 );
 
-  // dateSlider.noUiSlider.set(null,[timestamp(startRange)]);
   dateSlider.noUiSlider.updateOptions({
     start: [ timestamp(startRange) ],
     range: {
@@ -224,20 +220,10 @@ document.getElementById('slider-date').addEventListener('click', function () {
     let dropdownValue = document.getElementById('selDataset').value
     let results = dateCells.filter(i=> i.date == dropdownValue) 
   
-    // Create the slidebar
-    // let recordCt = results[0].cells.length
-
-    // let begin = results[0].cells[0].zTime
-    // let end = results[0].cells[recordCt - 1].zTime
-  
     function timestamp(str) {
       return new Date(str).getTime();
     }
-    // let calc = timestamp(begin)
 
-    // let startRange = new Date(begin).setUTCHours( 0,0,0,0 );
-
-  
     let startRange = new Date(dropdownValue).setUTCHours( 0,0,0,0 );
 
     cellData = results[0].cells
@@ -255,12 +241,7 @@ for (var i = 0; i < results.length; i++) {
     if (results[i].Azimuth < 180){
       var twister180Icon = L.icon({
         iconUrl: '../../static/img/twister.png',
-      
-        iconSize:     [24, 36] // size of the icon
-        // shadowSize:   [50, 64], // size of the shadow
-        // iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-        // shadowAnchor: [4, 62],  // the same for the shadow
-        // popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+        iconSize:     [24, 36] 
       })
       let direction = results[i].Azimuth;
 
@@ -278,12 +259,7 @@ for (var i = 0; i < results.length; i++) {
     else {
       var twister360Icon = L.icon({
         iconUrl: '../../static/img/twister-flip.png',
-      
-        iconSize:     [24, 36] // size of the icon
-        // shadowSize:   [50, 64], // size of the shadow
-        // iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-        // shadowAnchor: [4, 62],  // the same for the shadow
-        // popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+        iconSize:     [24, 36]
       })
       let direction = results[i].Azimuth;
 
