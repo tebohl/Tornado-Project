@@ -47,7 +47,10 @@ Some notes on the data:
 &nbsp;&nbsp;&nbsp;&nbsp;Month  
 
 
-### Visuals:
+## Visuals:
+
+### Landing page:
+![homepage](imgs/homepage.png)
 
 #### Storm Tracking:
 On the Cell Tracking page, you can view tornado instances based on date, as well as their movement throughout the day using the slider.
