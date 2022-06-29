@@ -9,7 +9,7 @@
 - Ishanjit Sidhu
 
 ## Description:
-In this project, we extracted data for Level 3 tornadoes from the last 2 months from www.ncdc.noaa.gov. After cleaning, we stored the data in MongoDB and used a Python Flask API to power a web application (See file app.py). We then created several visualizations using Leaflet and Plotly that allow you to interact with the data set.
+In this project, we extracted data for NEXRAD Level-3 Radar identifying Tornado Vortex Signatures from the last 2 months from www.ncdc.noaa.gov. After cleaning, we stored the data in MongoDB and used a Python Flask API to power a web application (See file app.py). We then created several visualizations using Leaflet and Plotly that allow you to interact with the data set.
 
 ![methods](imgs/methods.png)
 
@@ -30,7 +30,7 @@ Some notes on the data:
 &nbsp;&nbsp;&nbsp;&nbsp;Cell_ID: ID of the storm  
 &nbsp;&nbsp;&nbsp;&nbsp;zTime: Measure of time used in meterology  
 &nbsp;&nbsp;&nbsp;&nbsp;Azimuth: Angular direction of storm, in degrees  
-&nbsp;&nbsp;&nbsp;&nbsp;Range: Range of storm's path in nautical miles  
+&nbsp;&nbsp;&nbsp;&nbsp;Range: Distance between torndao and data collecting tower/radar 
 
 - We added the following columns:  
 &nbsp;&nbsp;&nbsp;&nbsp;Latitude  
@@ -58,9 +58,10 @@ On the Heat Map page, you'll see all of the data points plotted to show the dens
 ![heatmap](imgs/heatmap.png)
 
 ### Intensity Plots:
-On the Intensity page, you'll discover how Max Shear relates to Date and Range of the storms.
+On the Intensity page, you'll see the relationship between Max Shear, MXDV and date.
 
 ![image](imgs/image.png)
 
 ![image2](imgs/image2.png)
+
 
